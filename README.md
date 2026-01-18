@@ -28,21 +28,22 @@ The objective is not just high accuracy, but:
 - Strong governance and monitoring
 
 ## Solution Architecture
-Raw Data
-   ↓
-Data Validation (Great Expectations)
-   ↓
-Feature Engineering
-   ↓
-Model Training (Baseline + LightGBM)
-   ↓
-Probability Calibration
-   ↓
-Explainability (SHAP)
-   ↓
-Model & Data Drift Monitoring
-   ↓
-FastAPI Inference Service
+- Raw Data
+  - ↓
+- Data Validation (Great Expectations)
+  - ↓
+- Feature Engineering
+  - ↓
+- Model Training (Baseline + LightGBM)
+  - ↓
+- Probability Calibration
+  - ↓
+- Explainability (SHAP)
+  - ↓
+- Model & Data Drift Monitoring
+  - ↓
+- FastAPI Inference Service
+
 
 ## Dataset
 
@@ -54,21 +55,23 @@ FastAPI Inference Service
     -Commonly used in financial risk modeling
 
 ## Repository Structure
+```text
 credit-risk-ml/
-├── data/                 # Raw and processed data
-├── data_validation/      # Data quality & schema checks
-├── features/             # Feature engineering logic
-├── models/               # Model training & calibration
-├── evaluation/           # Risk-focused evaluation metrics
-├── explainability/       # SHAP-based explainability
-├── monitoring/           # Data & model drift detection
+├── data/                 # Raw and processed datasets
+├── data_validation/      # Data quality & schema checks using Great Expectations
+├── features/             # Feature engineering scripts and logic
+├── models/               # Model training & calibration (Baseline + LightGBM)
+├── evaluation/           # Risk-focused evaluation metrics and reports
+├── explainability/       # SHAP-based model explainability
+├── monitoring/           # Data & model drift detection scripts
 ├── experiments/          # MLflow experiment tracking
-├── api/                  # FastAPI inference service
-├── tests/                # Unit tests
-├── configs/              # Config-driven modeling
-├── Dockerfile
-├── requirements.txt
-└── README.md
+├── api/                  # FastAPI service for model inference
+├── tests/                # Unit tests for pipelines, functions, and API
+├── configs/              # Config files for parameters, paths, and hyperparameters
+├── Dockerfile            # Docker setup for deployment
+├── requirements.txt      # Python package dependencies
+└── README.md             # Project documentation and instructions
+```
 
 ## Modeling Approach
 ### Baseline Model
@@ -150,10 +153,12 @@ A production-ready FastAPI service exposes real-time predictions.
 POST /predict
 
 ### Example Response
+```json
 {
   "probability_of_default": 0.27,
   "decision": "REVIEW"
 }
+```
 
 
 Decision thresholds are configurable and reflect risk appetite.
@@ -165,18 +170,22 @@ Decision thresholds are configurable and reflect risk appetite.
 
 ### Run locally:
 
+```bash
 docker build -t credit-risk-ml .
 docker run -p 8000:8000 credit-risk-ml
+```
 
 ## Fairness & Bias
 Basic demographic parity and equal opportunity analysis are implemented to assess model behavior across customer segments. This reflects responsible ML practices in regulated environments.
 
 ### Example Usage:
 
+```python
 bias = demographic_parity(
     y_pred=(y_prob > 0.3).astype(int),
     sensitive_feature=df["home_ownership"]
 )
+```
 
 ## Limitations & Future Work
 - Batch retraining automation not implemented
