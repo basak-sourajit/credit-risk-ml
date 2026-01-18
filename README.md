@@ -38,8 +38,6 @@ The objective is not just high accuracy, but:
   - ↓
 - Probability Calibration
   - ↓
-- Explainability (SHAP)
-  - ↓
 - Model & Data Drift Monitoring
   - ↓
 - FastAPI Inference Service
@@ -103,21 +101,6 @@ Metrics used:
 ### Decision logic reflects business tradeoffs:
 - False negatives (missed defaulters) are more costly than false positives
 
-## Explainability & Governance
-
-Explainability is mandatory in regulated environments.
-
-Implemented using SHAP:
-- Global feature importance
-- Local explanations per prediction
-- Top contributing risk drivers (“reason codes”)
-
-These explanations can be used by:
-
-- Risk analysts
-- Credit officers
-- Model risk management teams
-
 ## Data & Model Monitoring
 ### Data Drift
 - Population Stability Index (PSI)
@@ -174,9 +157,6 @@ Decision thresholds are configurable and reflect risk appetite.
 docker build -t credit-risk-ml .
 docker run -p 8000:8000 credit-risk-ml
 ```
-
-## Fairness & Bias
-Basic demographic parity and equal opportunity analysis are implemented to assess model behavior across customer segments. This reflects responsible ML practices in regulated environments.
 
 ### Example Usage:
 

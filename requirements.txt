@@ -8,3 +8,5 @@ fastapi
 uvicorn
 great-expectations
 joblib
+pytest
+httpx

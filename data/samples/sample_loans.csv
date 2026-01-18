@@ -1,5 +1,0 @@
-loan_amnt,annual_inc,dti,open_acc,earliest_cr_line,loan_status,home_ownership
-10000,55000,14.5,6,2012-01-01,Fully Paid,RENT
-15000,72000,18.2,8,2010-05-01,Default,MORTGAGE
-8000,43000,22.1,4,2016-03-01,Fully Paid,OWN
-20000,90000,12.7,10,2008-07-01,Default,MORTGAGE

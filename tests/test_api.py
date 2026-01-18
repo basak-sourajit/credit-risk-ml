@@ -8,7 +8,8 @@ def test_predict_endpoint():
         "loan_amnt": 10000,
         "annual_inc": 60000,
         "dti": 15,
-        "open_acc": 5
+        "open_acc": 5,
+        "home_ownership": "RENT"   # categorical
     }
 
     response = client.post("/predict", json=payload)
