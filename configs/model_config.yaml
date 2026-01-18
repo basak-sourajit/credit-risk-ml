@@ -1,0 +1,32 @@
+data:
+  target_column: loan_status
+  positive_class: default
+  train_size: 0.7
+  valid_size: 0.15
+  test_size: 0.15
+  random_state: 42
+
+features:
+  categorical:
+    - term
+    - grade
+    - home_ownership
+    - purpose
+  numerical:
+    - loan_amnt
+    - annual_inc
+    - dti
+    - open_acc
+    - revol_bal
+    - credit_history_length
+
+model:
+  type: lightgbm
+  num_leaves: 31
+  max_depth: -1
+  learning_rate: 0.05
+  n_estimators: 300
+  class_weight: balanced
+
+evaluation:
+  decision_threshold: 0.3
